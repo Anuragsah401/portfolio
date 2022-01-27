@@ -4,6 +4,9 @@ import {faCoffee} from '@fortawesome/free-solid-svg-icons'
 
 import HeadTitle from '../HeadTitle/HeadTitle'
 import Card from './Card/Card';
+import Skills from './Skills/Skills';
+import CV from '../../assets/Files/AnuragCV.pdf';
+
 
 const Resume = () => {
 
@@ -42,13 +45,14 @@ const Resume = () => {
     ]
 
     return (
-        <div className=' bg-[#f7f7f7] py-[8rem]'>
+        <div id='resume' className=' bg-[#f7f7f7] py-[8rem]'>
             <div className='max-w-[1200px] m-auto'>
                 <div className='mb-[3.5rem]'>
                     <HeadTitle title="My Resume" subTitle='Education & Experience' center='center'/>
                 </div>
                 <div className='flex'>
-                    <div className='relative px-[7.5px] before:content-[""] before:absolute before:w-[3.5px] before:left-[2rem] before:h-[100%] before:bg-[#d9dae7] before:rounded-[35%]'>
+                    <div className='relative px-[7.5px]'>
+                        <div className=' before:content-[""] before:absolute before:w-[3.5px] before:left-[2rem] before:h-[96%] before:bg-[#d9dae7] before:rounded-[35%]'>
                         <div
                             className='pl-[70px] mr-[30]'>
                             {detail
@@ -57,9 +61,11 @@ const Resume = () => {
                                     return <Card item={item} key={index}/>
                                 })}
                         </div>
+                        </div>
                     </div>
 
-                    <div className='relative px-[7.5px] before:content-[""] before:absolute before:w-[3.5px] before:left-[2rem] before:h-[100%] before:bg-[#d9dae7] before:rounded-[35%]'>
+                    <div className='relative px-[7.5px]'>
+                        <div className='before:content-[""] before:absolute before:w-[3px] before:left-[2rem] before:h-[96%] before:bg-[#d9dae7] before:rounded-[35%]'>
                         <div
                             className='pl-[70px] mr-[30]'>
                             {detail
@@ -68,7 +74,18 @@ const Resume = () => {
                                     return <Card item={item} key={index}/>
                                 })}
                         </div>
+                        </div>
                     </div>
+                </div>
+                <div className='mt-[4.5rem]'>
+                    <Skills />
+                </div>
+                <div className='text-center mt-[2rem]'>
+                    <a href={CV} download>
+                        <div className='bg-[#1c203b] text-[white] py-[1rem] px-[2rem] text-[1.2rem] font-[500] inline-block rounded-[5px]'>
+                            Download CV
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

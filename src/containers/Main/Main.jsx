@@ -3,7 +3,9 @@ import Navbar from '../../components/Navbar/Navbar'
 import Hero from '../../components/Hero/Hero'
 import About from '../../components/About/About'
 import Resume from '../../components/Resume/Resume'
-
+import HireMe from '../../components/HireMe/HireMe'
+import Works from '../../components/Works/Works'
+import Footer from '../../components/Footer/Footer'
 
 
 const Main = () => {
@@ -17,6 +19,9 @@ const Main = () => {
                 <Hero/>
                 <About/>
                 <Resume />
+                <HireMe />
+                <Works />
+                <Footer />
             </div>
         </div>
     )

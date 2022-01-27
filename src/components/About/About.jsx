@@ -33,7 +33,7 @@ const About = () => {
     ]
 
     return (
-        <div className='bg-[white] py-[8rem]'>
+        <div id='about' className='bg-[white] py-[8rem]'>
             <div className='max-w-[1200px] m-auto'>
                 <div className='flex'>
                     <div
@@ -60,7 +60,7 @@ const About = () => {
                                     {detail.slice(0, 3).map((item, index) => {
                                         return (
                                             <li key={index} className='flex items-center text-center'>
-                                                <FontAwesomeIcon icon={item.logo} size='md`' color='#1c203b'/>
+                                                <FontAwesomeIcon icon={item.logo} size='sm' color='#1c203b'/>
                                                 <div className='text-center'>
                                                     <p className='text-lg ml-[20px]'>{item.detail}</p>
                                                 </div>
@@ -74,7 +74,7 @@ const About = () => {
                                     {detail.slice(3, 6).map((item, index) => { 
                                         return (
                                             <li key={index} className='flex items-center'>
-                                                <FontAwesomeIcon icon={item.logo} size='md' color='#1c203b'/>
+                                                <FontAwesomeIcon icon={item.logo} size='sm' color='#1c203b'/>
                                                 <p className='text-lg ml-[20px]'>{item.detail}</p>
                                             </li>
                                             )

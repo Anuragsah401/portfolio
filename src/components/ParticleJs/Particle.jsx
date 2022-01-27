@@ -19,7 +19,7 @@ const Particle = () => {
                 className="-z-50 fixed"
                 loaded={particlesLoaded}
                 options={{
-                fpsLimit: 60,
+                fpsLimit: 120,
                 background: {
                     color: "#151931"
                 },
@@ -27,15 +27,15 @@ const Particle = () => {
                     events: {
                         onClick: {
                             enable: true,
-                            mode: "push"
+                            mode: "pop"
                         },
                         onHover: {
                             enable: true,
                             mode: "repulse",
                             parallax: {
-                                enable: false,
+                                enable: true,
                                 force: 30,
-                                smooth: 5
+                                smooth: 10
                             }
                         },
                         resize: true
@@ -45,7 +45,7 @@ const Particle = () => {
                             quantity: 10
                         },
                         repulse: {
-                            distance: 150,
+                            distance: 100,
                             duration: 0.4
                         }
                     }
@@ -65,7 +65,7 @@ const Particle = () => {
                     number: {
                         density: {
                             enable: true,
-                            area: 500
+                            area: 800
                         },
                         value: 80
                     },
