@@ -2,9 +2,9 @@ import React from 'react'
 
 import HeadTitle from '../HeadTitle/HeadTitle'
 import img from '../../assets/images/pic.svg'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faSkype, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
-import {faUserTie, faEnvelope, faBirthdayCake, faLocationArrow} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSkype, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faUserTie, faEnvelope, faBirthdayCake, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 import Contribution from './Contribution/Contribution';
 
 
@@ -38,11 +38,11 @@ const About = () => {
                 <div className='flex'>
                     <div
                         className='flex-1 max-w-md max-h-[110vh] py-[20px] px-[25px]'>
-                        <img className='w-[100%] h-[100%] object-contain' src={img} alt=""/>
+                        <img className='w-[100%] h-[100%] object-contain' src={img} alt="" />
                     </div>
                     <div className='flex-1 px-[1.5rem]'>
                         <div className='mb-[2rem]'>
-                            <HeadTitle title="About Me" subTitle="Creative Designer"/>
+                            <HeadTitle title="About Me" subTitle="Creative Designer" />
                         </div>
                         <div>
                             <p className='leading-[1.8rem] text-[1.1rem]'>I am dedicated his life to
@@ -50,7 +50,7 @@ const About = () => {
                                 hecan, and shares his findings with his clients. His philosophy is to learn,
                                 test, analyse, improve and re-test. His motto is stay agile. I'm a Freelancer
                                 Front-end Developer with over 3 years of experience. I'm from San Francisco.
-                                <br/>
+                                <br />
                                 I code and create web elements for amazing people around the world. I like work
                                 with new people. New people new Experiences.</p>
                         </div>
@@ -60,7 +60,7 @@ const About = () => {
                                     {detail.slice(0, 3).map((item, index) => {
                                         return (
                                             <li key={index} className='flex items-center text-center'>
-                                                <FontAwesomeIcon icon={item.logo} size='sm' color='#1c203b'/>
+                                                <FontAwesomeIcon icon={item.logo} size='1x' color='#072227' />
                                                 <div className='text-center'>
                                                     <p className='text-lg ml-[20px]'>{item.detail}</p>
                                                 </div>
@@ -71,13 +71,13 @@ const About = () => {
                             </div>
                             <div className='flex-1'>
                                 <ul>
-                                    {detail.slice(3, 6).map((item, index) => { 
+                                    {detail.slice(3, 6).map((item, index) => {
                                         return (
                                             <li key={index} className='flex items-center'>
-                                                <FontAwesomeIcon icon={item.logo} size='sm' color='#1c203b'/>
+                                                <FontAwesomeIcon icon={item.logo} size='1x' color='#072227' />
                                                 <p className='text-lg ml-[20px]'>{item.detail}</p>
                                             </li>
-                                            )
+                                        )
                                     })}
                                 </ul>
                             </div>

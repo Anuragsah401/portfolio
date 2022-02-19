@@ -1,41 +1,41 @@
 import React from 'react';
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faGlobe, faClock, faGrin} from '@fortawesome/free-solid-svg-icons';
-import {faCalendarAlt} from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGlobe, faClock, faGrin } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 
 
 const Contribution = () => {
 
-    const detail  = [
+    const detail = [
         {
-            logo: <FontAwesomeIcon icon={faCalendarAlt} size='2x' color='#1c203b'/>,
+            logo: <FontAwesomeIcon icon={faCalendarAlt} size='2x' color='#072227' />,
             num: 50,
             detail: 'Working Hours'
         },
         {
-            logo: <FontAwesomeIcon icon={faGlobe} size='2x' color='#1c203b'/>,
+            logo: <FontAwesomeIcon icon={faGlobe} size='2x' color='#072227' />,
             num: 4,
             detail: 'Total Projects'
         },
         {
-            logo: <FontAwesomeIcon icon={faClock} size='2x' color='#1c203b'/>,
+            logo: <FontAwesomeIcon icon={faClock} size='2x' color='#072227' />,
             num: 2,
             detail: 'Years Journey'
         },
         {
-            logo: <FontAwesomeIcon icon={faGrin} size='2x' color='#1c203b'/>,
+            logo: <FontAwesomeIcon icon={faGrin} size='2x' color='#072227' />,
             num: 0,
             detail: 'Total Client'
         },
-        
+
     ]
-        
+
 
     return (
         <div className='px-[3rem]'>
             <div className='flex justify-between' >
-                {detail.map((item, index) => 
+                {detail.map((item, index) =>
                     <div className="flex" key={index}>
                         <div>
                             {item.logo}

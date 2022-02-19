@@ -1,31 +1,78 @@
 import React from 'react'
+import { Switch } from '@headlessui/react'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faAddressCard, faLaptopCode, faEnvelope, faFile } from '@fortawesome/free-solid-svg-icons'
-import {Link} from 'react-scroll'
+import NavLinks from './NavLinks/NavLinks';
+
 
 const Navbar = () => {
+
+    const [enabled, setEnabled] = React.useState(false)
+
+    const items = [
+        {
+            name: 'Home',
+            icon: faHome,
+            to: 'hero'
+        },
+        {
+            name: 'About',
+            icon: faAddressCard,
+            to: 'about'
+        },
+        {
+            name: 'Resume',
+            icon: faFile,
+            to: 'resume'
+        },
+        {
+            name: 'Work',
+            icon: faLaptopCode,
+            to: 'work'
+        },
+        {
+            name: 'Contact',
+            icon: faEnvelope,
+            to: 'footer'
+        }
+    ]
     return (
         <div className='max-w-[200px] backdrop-filter-[50px] backdrop-blur-[3px] backdrop-brightness-90 min-h-[100vh] text-center bg-[#15193100] fixed flex flex-col justify-center'>
             <div className=' flex-1'>
-                <div className='bg-[#1C203B] px-7 py-3'>
-                <h1 className='font-semibold text-6xl text-[#ebff77]'>A</h1>
+                <div className='bg-[#234042] px-7 py-3'>
+                    <h1 className='font-semibold text-6xl text-[#AEFEFF]'>A</h1>
                 </div>
             </div>
+
             <div className='flex-1'>
                 <ul>
-                    <li className='px-[20px] py-[20px]'><Link to="hero" spy={true} smooth={true} duration={1500}> <FontAwesomeIcon className='hover:text-[red] cursor-pointer' icon={faHome} size='lg' color='#e2e1f1'/></Link></li>
-                    <li className='px-[20px] py-[20px]'><Link to="about" spy={true} smooth={true} duration={1500}> <FontAwesomeIcon className='hover:text-[red] cursor-pointer' icon={faAddressCard} size='lg' color='#e2e1f1'/></Link></li>
-                    <li className='px-[20px] py-[20px]'><Link to="resume" spy={true} smooth={true} duration={1500}> <FontAwesomeIcon className='hover:text-[red] cursor-pointer' icon={faFile} size='lg' color='#e2e1f1'/></Link></li>
-                    <li className='px-[20px] py-[20px]'><Link to="work" spy={true} smooth={true} duration={1500}> <FontAwesomeIcon className='hover:text-[red] cursor-pointer' icon={faLaptopCode} size='lg' color='#e2e1f1'/></Link></li>
-                    <li className='px-[20px] py-[20px]'><Link to="footer" spy={true} smooth={true} duration={1500}> <FontAwesomeIcon className='hover:text-[red] cursor-pointer' icon={faEnvelope} size='lg' color='#e2e1f1'/></Link></li>
+                    {items.map((item, i) => <NavLinks item={item} key={i} />)}
+                    <li className='px-[20px] py-[20px]'>
+                        <Switch
+                            checked={enabled}
+                            onChange={setEnabled}
+                            className={`${enabled ? 'bg-teal-900' : 'bg-[#eee]'}
+                                        relative inline-flex flex-shrink-0 h-[20px] w-[34px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                        >
+                            <span className="sr-only">Use setting</span>
+                            <span
+                                aria-hidden="true"
+                                className={`${enabled ? 'translate-x-3.5' : 'translate-x-0'}
+                                                pointer-events-none inline-block h-[16px] w-[16px] rounded-full ${enabled ? 'bg-[#000]' : 'bg-[#072227]'} shadow-lg transform ring-0 transition ease-in-out duration-200`}
+                            />
+                        </Switch>
+                    </li>
                 </ul>
             </div>
+
+
+
             <div className='text-[#e2e1f1] text-center flex-1'>
                 <p className='-rotate-90'>@Anurag</p>
             </div>
+
         </div>
     )
 }
 
-export default Navbar
+export default Navbar 

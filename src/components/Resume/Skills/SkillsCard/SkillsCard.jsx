@@ -8,7 +8,7 @@ const SkillsCard = (props) => {
                 <h3>{props.item.text}</h3>
             </div>
             <div className="mt-[1rem] h-[5px] bg-[#c7c6c6] rounded-[1rem] w-[100%]">
-                <div className={`bg-[#1c203b] h-[100%] rounded-[1rem]`} style={{width: `${props.item.lvl}%`}}>
+                <div className={`bg-[#072227] h-[100%] rounded-[1rem]`} style={{ width: `${props.item.lvl}%` }}>
                 </div>
             </div>
         </div>

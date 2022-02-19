@@ -8,21 +8,23 @@ import Works from '../../components/Works/Works'
 import Footer from '../../components/Footer/Footer'
 
 
+
 const Main = () => {
     return (
         <div className="flex scroll-smooth">
             <div className="flex-0">
-                <Navbar/>
+                <Navbar />
             </div>
 
             <div className='flex-1 ml-[6rem]'>
-                <Hero/>
-                <About/>
+                <Hero />
+                <About />
                 <Resume />
                 <HireMe />
                 <Works />
                 <Footer />
             </div>
+
         </div>
     )
 }
