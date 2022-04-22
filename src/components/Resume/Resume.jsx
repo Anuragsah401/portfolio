@@ -2,7 +2,7 @@ import React from 'react'
 import { faUikit } from '@fortawesome/free-brands-svg-icons';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
-import HeadTitle from '../HeadTitle/HeadTitle'
+import HeadTitle from '../UI-Elements/HeadTitle/HeadTitle'
 import Card from './Card/Card';
 import Skills from './Skills/Skills';
 import CV from '../../assets/Files/AnuragCV.pdf';
@@ -82,7 +82,7 @@ const Resume = () => {
                 </div>
                 <div className='text-center mt-[2rem]'>
                     <a href={CV} download>
-                        <div className='bg-[#4FBDBA] text-[#000000] py-[1rem] px-[1.5rem] text-[1.2rem] font-[500] inline-flex items-center rounded-[5px]'>
+                        <div className='bg-[#4FBDBA] text-[#000000] py-[1rem] px-[1.5rem] text-[1.2rem] font-[500] inline-flex items-center rounded-[5px] hover:bg-[#000000] hover:text-[#eee] transition-all ease-in-out delay-50'>
                             <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
                             <span>Download CV</span>
                         </div>

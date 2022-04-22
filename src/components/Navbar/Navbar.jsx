@@ -37,7 +37,7 @@ const Navbar = () => {
         }
     ]
     return (
-        <div className='max-w-[200px] backdrop-filter-[50px] backdrop-blur-[3px] backdrop-brightness-90 min-h-[100vh] text-center bg-[#15193100] fixed flex flex-col justify-center'>
+        <div data-aos="fade-right" data-aos-delay="150" className='max-w-[200px] backdrop-filter-[50px] backdrop-blur-[3px] backdrop-brightness-90 min-h-[100vh] text-center bg-[#15193100] fixed flex flex-col justify-center'>
             <div className=' flex-1'>
                 <div className='bg-[#234042] px-7 py-3'>
                     <h1 className='font-semibold text-6xl text-[#AEFEFF]'>A</h1>

@@ -1,5 +1,7 @@
 import React from 'react'
+
 import Typewriter from "typewriter-effect";
+import "aos/dist/aos.css"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -12,11 +14,17 @@ const Hero = () => {
     const [colorChange3, setColorChange3] = React.useState(false)
     const [colorChange4, setColorChange4] = React.useState(false)
 
+    // React.useEffect(() => {
+    //     Aos.init({
+    //         duration: 3000
+    //     })
+    // })
+
     return (
         <div id='hero' className='h-[100vh]'>
             <div className='max-w-[1200px] h-[100%] flex mx-auto justify-center items-center'>
                 <div className='flex-1'>
-                    <h1 className='text-[3.2rem] text-[#ffffff] font-[600] '>Anurag Sah</h1>
+                    <h1 data-aos="fade" data-aos-delay="100" className='text-[3.2rem] text-[#ffffff] font-[600] '>Anurag Sah</h1>
                     <div
                         className='text-[20px] tracking-wider text-[#fff] leading-[1.778] mb-[1rem]'>
                         <Typewriter
@@ -25,6 +33,7 @@ const Hero = () => {
                                 loop: true,
                                 autoStart: true,
                                 delay: 30,
+                                deleteSpeed: 30
                             }}
                         />
                     </div>
@@ -32,10 +41,10 @@ const Hero = () => {
                         proficient in ui design, digital marketing web development.</p>
                     <a href={CV} download>
                         <div
-                            className='rounded-md mt-[2rem] px-[25px] py-[15px] bg-[#4FBDBA] inline-block text-[#000000] font-medium text-[1]'>Download CV</div>
+                            className='rounded-md mt-[2rem] px-[25px] py-[15px] bg-[#4FBDBA] inline-block text-[#000000] font-medium text-[1] hover:bg-[#000000] hover:text-[#eee] transition-all ease-in-out delay-50'>Download CV</div>
                     </a>
                 </div>
-                <div className='flex-1 flex justify-end'>
+                <div data-aos="fade-left" data-aos-delay="150" className='flex-1 flex justify-end'>
                     <ul>
                         <a href=".">
                             <li onMouseOver={() => setColorChange1(true)} onMouseOut={() => setColorChange1(false)}

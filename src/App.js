@@ -1,7 +1,7 @@
 import React from "react";
 
 import Main from "./containers/Main/Main";
-import Particle from "./components/ParticleJs/Particle";
+import Particle from "./components/UI-Elements/ParticleJs/Particle";
 
 function App() {
   return (
