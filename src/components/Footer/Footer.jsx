@@ -1,169 +1,201 @@
 import React from "react";
 
 import HeadTitle from "../UI-Elements/HeadTitle/HeadTitle";
+
 import { faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import GoogleMap from "./GoogleMap/GoogleMap";
-import emailjs from '@emailjs/browser';
 
+import emailjs from "@emailjs/browser";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
   const form = React.useRef();
 
-  const [subject, setSubject] = React.useState('')
-  const [name, setName] = React.useState('')
-  const [email, setEmail] = React.useState('')
-  const [message, setMessage] = React.useState('')
+  const [subject, setSubject] = React.useState("");
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
 
-  const [subjectError, setSubjectError] = React.useState('')
-  const [nameError, setNameError] = React.useState('')
-  const [emailError, setEmailError] = React.useState('')
-  const [messageError, setMessageError] = React.useState('')
+  const [subjectError, setSubjectError] = React.useState("");
+  const [nameError, setNameError] = React.useState("");
+  const [emailError, setEmailError] = React.useState("");
+  const [messageError, setMessageError] = React.useState("");
 
-  const [sendStatus, setSendStatus] = React.useState('Send Me')
-
-  const [msgSent, setMsgSent] = React.useState(false)
-  const [visibility, setVisibility] = React.useState(false)
-
+  const [sendStatus, setSendStatus] = React.useState("Send Me");
 
   const validation = () => {
+    let isValid = true;
 
-    let isValid = true
-
-    if (subject.includes('@') || subject.length === 0) {
-      setSubjectError(subject.length === 0 ? 'This field is Empty!' : 'Please Enter valid Subject')
-      isValid = false
+    if (subject.includes("@") || subject.length === 0) {
+      setSubjectError(subject.length === 0 ? "This field is Empty!" : "Please Enter valid Subject");
+      isValid = false;
     } else {
-      setSubjectError('')
+      setSubjectError("");
     }
 
-    if (name.includes('@') || name.length === 0) {
-      setNameError(name.length === 0 ? 'This field is Empty!' : 'Please Enter valid name')
-      isValid = false
+    if (name.includes("@") || name.length === 0) {
+      setNameError(name.length === 0 ? "This field is Empty!" : "Please Enter valid name");
+      isValid = false;
     } else {
-      setNameError('')
+      setNameError("");
     }
 
-    if (!email.includes('@') || email.length === 0) {
-      setEmailError(email.length === 0 ? 'This field is Empty!' : 'Please Enter valid email')
-      isValid = false
+    if (!email.includes("@") || email.length === 0) {
+      setEmailError(email.length === 0 ? "This field is Empty!" : "Please Enter valid email");
+      isValid = false;
     } else {
-      setEmailError('')
+      setEmailError("");
     }
 
     if (message.length === 0) {
-      setMessageError('Drop some messages!')
-      isValid = false
+      setMessageError("Please Drop some messages!");
+      isValid = false;
     } else {
-      setMessageError('')
+      setMessageError("");
     }
-    return isValid
-
-  }
+    return isValid;
+  };
 
   const sendMail = (e) => {
     e.preventDefault();
     if (validation()) {
-      setSendStatus('Sending...')
-      emailjs.sendForm('service_z3k5bl8', 'template_sie362r', form.current, `user_${process.env.REACT_APP_EMAILJS_API}`)
-        .then((result) => {
-          setSendStatus('Send Me')
-          setSubject('')
-          setName('')
-          setEmail('')
-          setMessage('')
-          setVisibility(true)
-          setMsgSent(true)
-          e.target.reset()
-        }, (error) => {
-          setSendStatus('Send Me')
-          setMsgSent(false)
-          setVisibility(true)
-        });
+      setSendStatus("Sending...");
+      emailjs
+        .sendForm(
+          "service_z3k5bl8",
+          "template_sie362r",
+          form.current,
+          `user_${process.env.REACT_APP_EMAILJS_API}`
+        )
+        .then(
+          (result) => {
+            setSendStatus("Send Me");
+            setSubject("");
+            setName("");
+            setEmail("");
+            setMessage("");
 
-      setTimeout(() => {
-        setVisibility(false)
-      }, 5000)
-
+            toast.success("Your Message has been sent!");
+            e.target.reset();
+          },
+          (error) => {
+            setSendStatus("Send Me");
+            toast.error("Your Message was not sent!");
+          }
+        );
     }
-    // console.log(nameError)
-    // console.log(emailError)
-    // console.log(messageError)
-  }
-
-  // console.log(message.length)
-  // console.log(subjectError)
-
+  };
 
   return (
     <div id="footer" className="pt-[8rem] pb-[2.5rem] bg-[#072227ce] relative">
-
-      <div className={`absolute bottom-10 left-0 text-white py-[0.8rem] px-[2rem] ${msgSent ? 'bg-[green]' : 'bg-[red]'} transition ease-in-out delay-150 ${visibility ? 'visible' : 'invisible'}`}>
-        {msgSent ? 'Message sent' : "Message not send"}
-      </div>
-
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       <div className="max-w-[1200px] m-auto">
         <div className="mb-[3.5rem]">
-          <HeadTitle title="Contact" subTitle="Get in Touch With Me" center="center" titleColor='#AEFEFF' subColor='#eee' />
+          <HeadTitle
+            title="Contact"
+            subTitle="Get in Touch With Me"
+            center="center"
+            titleColor="#AEFEFF"
+            subColor="#eee"
+          />
         </div>
         <div className="flex">
           <div className="flex-1">
-            <form action="" className="flex flex-col gap-[1.5rem]" ref={form} onSubmit={(e) => sendMail(e)}>
+            <form
+              action=""
+              className="flex flex-col gap-[1.5rem]"
+              ref={form}
+              onSubmit={(e) => sendMail(e)}
+            >
               <div className="transition ease delay-50">
                 <input
-                  className={`w-[100%] py-[0.5rem] px-[1rem] border-b-2 ${subjectError ? 'border-[#ff5959]' : 'border-[#dad8d8]'} bg-transparent outline-none caret-white text-white transition ease delay-[0.5]`}
+                  className={`w-[100%] py-[0.5rem] px-[1rem] border-b-2 ${
+                    subjectError ? "border-[#ff5959]" : "border-[#dad8d8]"
+                  } bg-transparent outline-none caret-white text-white transition ease delay-[0.5]`}
                   type="text"
                   placeholder="Subject"
                   name="user_subject"
-                  onFocus={() => setSubjectError('')}
+                  onFocus={() => setSubjectError("")}
                   onChange={(e) => setSubject(e.target.value.trim())}
                 />
-                {subjectError ? <p className='text-[#ff5959] mt-[0.5rem] translate-x-2'>{subjectError}</p> : null}
+                {subjectError ? (
+                  <p className="text-[#ff5959] mt-[0.5rem] translate-x-2">{subjectError}</p>
+                ) : null}
               </div>
 
               <div>
                 <input
-                  className={`w-[100%] py-[0.5rem] px-[1rem] border-b-2 ${nameError ? 'border-[#ff5959]' : 'border-[#dad8d8]'} bg-transparent outline-none caret-white text-white capitalize transition ease delay-10`}
+                  className={`w-[100%] py-[0.5rem] px-[1rem] border-b-2 ${
+                    nameError ? "border-[#ff5959]" : "border-[#dad8d8]"
+                  } bg-transparent outline-none caret-white text-white capitalize transition ease delay-10`}
                   type="username"
                   placeholder="Your name"
                   name="user_name"
-                  onFocus={() => setNameError('')}
+                  onFocus={() => setNameError("")}
                   onChange={(e) => setName(e.target.value.trim())}
                 />
-                {nameError ? <p className='text-[#ff5959] transition ease delay-10 mt-[0.5rem]'>{nameError}</p> : null}
+                {nameError ? (
+                  <p className="text-[#ff5959] transition ease delay-10 mt-[0.5rem]">{nameError}</p>
+                ) : null}
               </div>
 
               <div>
                 <input
-                  className={`w-[100%] py-[0.5rem] px-[1rem] border-b-2 ${emailError ? 'border-[#ff5959]' : 'border-[#dad8d8]'} bg-transparent outline-none caret-white text-white transition ease delay-10`}
+                  className={`w-[100%] py-[0.5rem] px-[1rem] border-b-2 ${
+                    emailError ? "border-[#ff5959]" : "border-[#dad8d8]"
+                  } bg-transparent outline-none caret-white text-white transition ease delay-10`}
                   type="email"
                   placeholder="Your Email Here"
                   name="user_email"
-                  onFocus={() => setEmailError('')}
+                  onFocus={() => setEmailError("")}
                   onChange={(e) => setEmail(e.target.value.trim())}
                 />
-                {emailError ? <p className='text-[#ff5959] transition ease delay-10 mt-[0.5rem]'>{emailError}</p> : null}
+                {emailError ? (
+                  <p className="text-[#ff5959] transition ease delay-10 mt-[0.5rem]">
+                    {emailError}
+                  </p>
+                ) : null}
               </div>
 
               <div>
                 <textarea
-                  className={`w-[100%] py-[0.5rem] px-[1rem] border-b-2 ${messageError ? 'border-[#ff5959]' : 'border-[#dad8d8]'} bg-transparent outline-none caret-white text-white transition ease delay-10`}
+                  className={`w-[100%] py-[0.5rem] px-[1rem] border-b-2 ${
+                    messageError ? "border-[#ff5959]" : "border-[#dad8d8]"
+                  } bg-transparent outline-none caret-white text-white transition ease delay-10`}
                   type="textarea"
                   placeholder="Drop Message"
                   rows="4"
                   cols="50"
                   name="user_message"
-                  onFocus={() => setMessageError('')}
+                  onFocus={() => setMessageError("")}
                   onChange={(e) => setMessage(e.target.value.trim())}
                 />
-                {messageError ? <p className='text-[#ff5959] transition ease-in-out delay-10 mt-[0.5rem]'>{messageError}</p> : null}
+                {messageError ? (
+                  <p className="text-[#ff5959] transition ease-in-out delay-10 mt-[0.5rem]">
+                    {messageError}
+                  </p>
+                ) : null}
               </div>
 
               <div className="mt-[1rem] text-center">
-                <button id='btn'
+                <button
+                  id="btn"
                   className={`bg-[#4FBDBA]
                             w-[22%]   
                             py-[0.7rem] 
@@ -171,7 +203,8 @@ const Footer = () => {
                             text-[#000] 
                             font-[600] 
                             rounded-[5px] 
-                            text-[18px] text-center hover:bg-[#000000] hover:text-[#eee] transition-all ease-in-out delay-50`}>
+                            text-[18px] text-center hover:bg-[#000000] hover:text-[#eee] transition-all ease-in-out delay-50`}
+                >
                   {sendStatus}
                 </button>
               </div>
@@ -190,7 +223,9 @@ const Footer = () => {
               </li>
               <li>
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="text-[1.3rem]" color="#eee" />
-                <p className="inline ml-[1rem] text-[18px] text-[#eee]">Dhumbarahi-01, Kathmandu, Nepal</p>
+                <p className="inline ml-[1rem] text-[18px] text-[#eee]">
+                  Dhumbarahi-01, Kathmandu, Nepal
+                </p>
               </li>
             </ul>
             <div className="w-[90%] h-[250px] mt-[1.5rem]">
@@ -199,10 +234,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='mt-[2rem] text-right text-[#eee] font-[500] text-[1.1rem]'>
+        <div className="mt-[2rem] text-right text-[#eee] font-[500] text-[1.1rem]">
           <p>All Rights Reserved By Anurag.dev 2022.</p>
-          <div>
-          </div>
+          <div></div>
         </div>
       </div>
     </div>
